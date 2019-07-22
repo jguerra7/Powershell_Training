@@ -28,7 +28,15 @@ Also, beware that the Execution Policy may be enforced by Group Policy, so that 
 **Unrestricted** system-wide, Group Policy may revert that setting at its next enforcement interval (typically 15
 minutes). You can see the execution policy set at the various scopes using **Get-ExecutionPolicy -List**
 
+# Simple Scripting Lab
 
+In your favorite editor:
+Type the following commands( Change the "Out-File" to a location of your choosing)
+```powershell
+"Hello, World!" | Out-File C:\ps\test.txt
+```
+Save the File with a ".ps1" extension.
 
+Now on powershell navigate to the location of your file and execute the script by typing "./nameofile.extension"
 
 
