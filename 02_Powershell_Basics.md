@@ -43,7 +43,36 @@ Although this is more complex, you can probably still figure out what it does. I
 ```
 Now we’re getting somewhere. This script downloads the RSS feed from the PowerShell team blog and then displays the title and a link for each blog entry. By the way, you weren’t expected to figure out this example yet. If you did, you can move to the head of the class!
 
+One last example:
+```powershell
+using assembly  System.Windows.Forms
+using namespace System.Windows.Forms
+$form = [Form] @{
+    Text = 'My First Form'
+}
+$button = [Button] @{
+    Text = 'Push Me!'
+    Dock = 'Fill'
+}
+$button.add_Click{
+    $form.Close()
+}
+$form.Controls.Add($button)
+$form.ShowDialog()
+```
+This script uses the Windows Forms library (WinForms) to build a GUI that has a single button displaying the text “Push Me!” Figure below shows the window this script creates.
 
+![image](https://user-images.githubusercontent.com/47218880/61659686-ae879c80-ac8d-11e9-96bf-28fca1193501.png)
+
+When you click the button, it closes the form and exits the script. With this you go from "Hello world" to a GUI application in less than two pages.
+
+Let’s come back down to Earth for a minute. The intent of chapter 1 is to set the stage for understanding PowerShell—what it is, what it isn’t, and, almost as important, why the PowerShell team made the decisions they made in designing the PowerShell language. Chapter 1 covers the goals of the project, along with some of the major issues the team faced in trying to achieve those goals. First, a philosophical digression: while under development, from 2002 until the first public release in 2006, the codename for this project was Monad. The name Monad comes from The Monadology by Gottfried Wilhelm Leibniz, one of the inventors of calculus. Here’s how Leibniz defined the Monad:
+
+The Monad, of which we shall here speak, is nothing but a simple substance, which enters into compounds. By “simple” is meant “without parts.”
+
+Gottfried Wilhelm Leibniz, The Monadology (translated by Robert Latta)
+
+In The Monadology, Leibniz describes a world of irreducible components from which all things could be composed. This captures the spirit of the project: to create a toolkit of simple pieces you compose to create complex solutions.
 
 > Typical Command Example:
 ![image](https://user-images.githubusercontent.com/47218880/61650708-e258c700-ac79-11e9-9ff8-8521ec686382.png)
