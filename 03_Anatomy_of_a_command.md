@@ -59,7 +59,9 @@ Mode                LastWriteTime         Length Name
 -a----       29/05/2017     13:58          25424 somefile.txt
 ```
 ```
-PowerShell has aliases for many cmdlets so dir C:\somefile.txt and ls C:\somefile.txt would both work. It is best practice to reserve aliases for interactive usage and not use them in scripts. We’ll usually use the full cmdlet name but may occasionally use aliases to save space.
+PowerShell has aliases for many cmdlets so dir C:\somefile.txt and ls C:\somefile.txt would both work. 
+It is best practice to reserve aliases for interactive usage and not use them in scripts.
+We’ll usually use the full cmdlet name but may occasionally use aliases to save space.
 ```
 Next, instead of displaying the directory listing, you’ll save it into a file using output redirection as in other shell environments. In the following example, you’ll get information about a file named somefile.txt in the root of the C: drive. Using redirection, you direct the output into a new file, c:\foo.txt, and then use the Get-Content (you can use the alias of cat or type if you prefer) command to display what was saved. Here’s what this looks like:
 
