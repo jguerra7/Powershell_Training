@@ -32,6 +32,7 @@ First, let’s discuss some terminology. As far as we know, we’re the only one
 - A **workflow** is a special kind of function that ties into PowerShell’s workflow execution system.
 - An **application** is any kind of external executable, including command-line utilities such as Ping and Ipconfig.
 - **Command** is the generic term that we use to refer to any or all of the preceding terms.
+
 Microsoft has established a naming convention for cmdlets. That same naming convention **should** be used for functions and workflows, too, although Microsoft can’t force anyone but its own employees to follow that rule.
 
 The rule is this: Names start with a standard verb, such as **Get** or **Set** or New or Pause. You can run **Get-Verb** to see a list of allowable verbs (you’ll see about 100, although only about a dozen are common). After the verb is a dash, followed by a singular noun, such as Service or Process or EventLog. Developers get to make up their own nouns, so there’s no **Get-Noun** cmdlet to display them all.
