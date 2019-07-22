@@ -78,7 +78,8 @@ Mode                LastWriteTime         Length Name
 As you can see, commands work more or less as you’d expect. Let’s go over other things that should be familiar to you.
 
 ```
-On your system choose any file that exists and the example will work fine, though obviously, the output will be different.
+On your system choose any file that exists and the example will work fine, 
+though obviously, the output will be different.
 ```
 
 
