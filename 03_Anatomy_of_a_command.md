@@ -15,3 +15,7 @@ let’s cover each of the elements in the previous figure in more detail:
 - There’s a mandatory space after the parameter name, and between the parameter’s value and the next parameter name.
 - There’s no space between the dash (-) that precedes a parameter name and the parameter name itself.
 - Nothing here is case-sensitive.
+
+```
+Get used to these rules. Start being sensitive about accurate, neat typing. Paying attention to spaces and dashes and other rules will minimize the silly errors that PowerShell throws at you.
+```
