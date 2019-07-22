@@ -28,6 +28,22 @@ Starting at the beginning, here’s the traditional “Hello world” program in
 ```powershell
 'hello world'
 ```
+But “Hello world” itself isn’t interesting. Here’s something a bit more complicated:
+```powershell
+Get-ChildItem -Path $env:windir\*.log |
+Select-String -List error |
+Format-Table Path,LineNumber –AutoSize
+```
+Although this is more complex, you can probably still figure out what it does. It searches all the log files in the Windows directory, looking for the string “error”, and then prints the full name of the matching file and the matching line number. “Useful, but not special,” you might think, because you can easily do this using cmd.exe on Windows or bash on UNIX. What about the “big, really big” thing? Well, how about this example:
+```powershell
+([xml] [System.Net.WebClient]::new().
+    DownloadString('http://blogs.msdn.com/powershell/rss.aspx')).
+        RSS.Channel.Item |
+            Format-Table title,link
+```
+Now we’re getting somewhere. This script downloads the RSS feed from the PowerShell team blog and then displays the title and a link for each blog entry. By the way, you weren’t expected to figure out this example yet. If you did, you can move to the head of the class!
+
+
 
 > Typical Command Example:
 ![image](https://user-images.githubusercontent.com/47218880/61650708-e258c700-ac79-11e9-9ff8-8521ec686382.png)
