@@ -37,3 +37,9 @@ Microsoft has established a naming convention for cmdlets. That same naming conv
 
 The rule is this: Names start with a standard verb, such as **Get** or **Set** or New or Pause. You can run **Get-Verb** to see a list of allowable verbs (you’ll see about 100, although only about a dozen are common). After the verb is a dash, followed by a singular noun, such as Service or Process or EventLog. Developers get to make up their own nouns, so there’s no **Get-Noun** cmdlet to display them all.
 
+What’s the big deal about this rule? Well, suppose we told you that there were cmdlets named New-Service, Get-Service, Get-Process, Set-Service, and so forth. Could you guess what command would create a new Exchange mailbox? Could you guess what command would modify an Active Directory user? If you guessed New-Mailbox, you got the first one right. If you guessed Set-User, you were close: it’s Set-ADUser, and you’ll find the command on domain controllers in the Active-Directory module. The point is that by having this consistent naming convention with a limited set of verbs, it becomes possible for you to guess at command names, and you could then use Help or Get-Command, along with wildcards, to validate your guess. It becomes easier for you to figure out the names of the commands you need, without having to run to Google or Bing every time.
+
+```
+OK,OK
+```
+Not all of the so-called verbs are really verbs. Although Microsoft officially uses the term verb-noun naming convention, you’ll see “verbs” like New, Where, and so forth. You’ll get used to it.
