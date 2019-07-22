@@ -21,7 +21,13 @@ Is Powershell just the command line prompt with a blue background
     -Makes dealing with command results very easy and efficient
   - Powershell provides access to the .NET Framework, the building blocks of Windows functionalities.
 
-Powershell commands
+## Powershell commands
+
+Starting at the beginning, here’s the traditional “Hello world” program in PowerShell:
+
+```powershell
+'hello world'
+```
 
 > Typical Command Example:
 ![image](https://user-images.githubusercontent.com/47218880/61650708-e258c700-ac79-11e9-9ff8-8521ec686382.png)
