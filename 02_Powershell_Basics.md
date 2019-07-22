@@ -66,13 +66,23 @@ This script uses the Windows Forms library (WinForms) to build a GUI that has a 
 
 When you click the button, it closes the form and exits the script. With this you go from "Hello world" to a GUI application in less than two pages.
 
-Let’s come back down to Earth for a minute. The intent of chapter 1 is to set the stage for understanding PowerShell—what it is, what it isn’t, and, almost as important, why the PowerShell team made the decisions they made in designing the PowerShell language. Chapter 1 covers the goals of the project, along with some of the major issues the team faced in trying to achieve those goals. First, a philosophical digression: while under development, from 2002 until the first public release in 2006, the codename for this project was Monad. The name Monad comes from The Monadology by Gottfried Wilhelm Leibniz, one of the inventors of calculus. Here’s how Leibniz defined the Monad:
+Let’s come back down to Earth for a minute. The intent of this section is to set the stage for understanding PowerShell—what it is, what it isn’t, and, almost as important, why the PowerShell team made the decisions they made in designing the PowerShell language. First, a philosophical digression: while under development, from 2002 until the first public release in 2006, the codename for this project was Monad. The name Monad comes from The Monadology by Gottfried Wilhelm Leibniz, one of the inventors of calculus. Here’s how Leibniz defined the Monad:
 
 The Monad, of which we shall here speak, is nothing but a simple substance, which enters into compounds. By “simple” is meant “without parts.”
 
 Gottfried Wilhelm Leibniz, The Monadology (translated by Robert Latta)
 
 In The Monadology, Leibniz describes a world of irreducible components from which all things could be composed. This captures the spirit of the project: to create a toolkit of simple pieces you compose to create complex solutions.
+
+## What is Powershell? 
+
+What is PowerShell, and what can you do with it? Ask a group of PowerShell users and you’ll get different answers:
+```
+PowerShell is a command-line shell.
+PowerShell is a scripting environment.
+PowerShell is an automation engine.
+```
+These are all part of the answer. We prefer to say PowerShell is a tool you can use to manage your Microsoft-based machines and applications that programs consistency into your management process. The tool is attractive to administrators and developers in that it can span the range of command line, simple and advanced scripts, to real programs.
 
 > Typical Command Example:
 ![image](https://user-images.githubusercontent.com/47218880/61650708-e258c700-ac79-11e9-9ff8-8521ec686382.png)
