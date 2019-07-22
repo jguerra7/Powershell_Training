@@ -17,5 +17,8 @@ let’s cover each of the elements in the previous figure in more detail:
 - Nothing here is case-sensitive.
 
 ```
-Get used to these rules. Start being sensitive about accurate, neat typing. Paying attention to spaces and dashes and other rules will minimize the silly errors that PowerShell throws at you.
+Get used to these rules. Start being sensitive about accurate, neat typing. 
+Paying attention to spaces and dashes and other rules will minimize 
+the silly errors that PowerShell throws at you.
+
 ```
