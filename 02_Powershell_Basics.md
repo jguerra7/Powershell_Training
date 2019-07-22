@@ -30,3 +30,7 @@ Powershell commands
 ![image](https://user-images.githubusercontent.com/47218880/61650874-52ffe380-ac7a-11e9-8d52-9f9f5c7274c3.png)
 
 ![image](https://user-images.githubusercontent.com/47218880/61651077-b9850180-ac7a-11e9-9148-fe7500f712fc.png)
+
+## So What's the difference between Powershell and Cmd.exe?
+  - Powershell provides the programming power and accessibility of an object oriented programming language in a scripting environment.
+  
