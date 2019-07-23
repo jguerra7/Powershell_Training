@@ -35,9 +35,17 @@ SYNTAX
     [<SwitchParameter>]] [-Exclude <String[]>] [-Include <String[]>]
     [-InputObject <ServiceController[]>] [-RequiredServices
     [<SwitchParameter>]] [<CommonParameters>]
-    ```
+  ```
     
-    When asked for help about an alias, the help system will always display the help for the full command, which includes the command’s complete name.
-    
+  When asked for help about an alias, the help system will always display the help for the full command, which includes the command’s complete name.
+   
+## Above and beyond
+You can create your own aliases by using *New-Alias*, export a list of aliases by using *Export-Alias*, or even import a list of previously created aliases by using *Import-Alias*. When you create an alias, it lasts only as long as your current shell session. Once you close the window, it’s gone. That’s why you might want to export them, so that you can more easily reimport them.
+
+We tend to avoid creating and using custom aliases, though, because they’re not available to anyone but us. If someone can’t look up what *xtd* does, we’re creating confusion and incompatibility.
+
+And *xtd* doesn’t do anything. It’s a fake alias we made up.
+
+We must point out, because PowerShell is now available on non-Windows operating systems, that its concept of alias is a little different from an alias on, say, Linux. On Linux, an alias can be a kind of shortcut for running a command that includes a bunch of parameters. PowerShell doesn’t behave that way. An alias is only a nickname for the command name, and the alias can’t include any predetermined parameters.
     
     
