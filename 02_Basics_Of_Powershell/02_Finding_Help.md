@@ -48,3 +48,43 @@ REMARKS
 ```powershell
 Get-Help about_Updatable_Help 
 ```
+# The Get-Help command
+Without any arguments or parameters, Get-Help will show introductory help about the help system. This content is taken from the default help file (Get-Help default); a snippet of this is as follows:
+```powershell
+PS> Get-Help
+
+TOPIC
+    Windows PowerShell Help System
+
+SHORT DESCRIPTION
+    Displays help about Windows PowerShell cmdlets and concepts. 
+
+LONG DESCRIPTION
+    Windows PowerShell Help describes Windows PowerShell cmdlets,
+```
+
+The help content can be long:
+The help content, in most cases, will not fit on a single screen. The help command differs from Get-Help in that it pauses (waiting for a key to be pressed) after each page. Let's look at an example:
+help default
+The previous command is equivalent to running Get-Help and piping it into the more command:
+```powershell
+Get-Help default | more
+```
+Alternatively, Get-Help can be asked to show a window:
+```powershell
+Get-Help default -ShowWindow
+```
+The available help content may be listed using either of the following two commands:
+```powershell
+Get-Help * 
+Get-Help -Category All
+```
+Help for a command may be viewed as follows:
+```powershell
+Get-Help <CommandName>
+```
+Let's look at an example:
+```powershell
+Get-Help Get-Variable 
+```
+The help content is broken down into a number of visible sections: name, synopsis, syntax, description, related links, and remarks.
