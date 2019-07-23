@@ -25,6 +25,7 @@ But these examples are all incorrect:
 ```
 Dir-rec (no space between alias and parameter)
 New-PSDrive -nameDEMO (no space between parameter name and value)
-New-PSDrive -name DEMO-psprovider FileSystem (no space between the first parameter’s value and the second parameter’s name)
+New-PSDrive -name DEMO-psprovider FileSystem 
+(no space between the first parameter’s value and the second parameter’s name)
 ```
 PowerShell isn’t normally picky about upper- and lowercase, meaning that dir and DIR are the same, as are -RECURSE and -recurse and -Recurse. But the shell sure is picky about those spaces and dashes.
