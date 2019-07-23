@@ -65,5 +65,24 @@ Mode                LastWriteTime     Length Name
 d----         3/27/2016  11:20 AM            Instructor
 d-r--         2/18/2016   2:06 AM            Public
 ```
+The problem with positional parameters is that you’re taking on the responsibility of remembering what goes where. You must type all positional parameters first, in the correct order, before you can add any named (nonpositional) parameters. If you mix up the parameter order, the command fails. For simple commands such as Dir, which you’ve probably used for years, typing -Path feels weird, and almost nobody does it. But for more-complex commands, which might have three or four positional parameters in a row, it can be tough to remember what goes where.
 
-   
+For example, this is a bit difficult to read and interpret:
+
+```powershell
+PS C:\> move file.txt users\instructor\
+```
+This version, which uses parameter names, is easier to follow:
+
+```powershell
+PS C:\> move -Path c:\file.txt -Destination \users\instructor\
+```
+This version, which puts the parameters in a different order, is allowed when you use the parameter names:
+```poweshell
+PS C:\> move -Destination \users\instructor\ -Path c:\file.txt
+```
+We tend to recommend against using positional (unnamed) parameters unless you’re banging out something quick and dirty at the command line. In anything that will persist, such as a batch file or a blog post, include all of the parameter names. We do that as much as possible in this book, except in a few instances where we have to shorten the command line to make it fit within the printed pages.
+
+
+
+
