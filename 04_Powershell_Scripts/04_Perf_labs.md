@@ -1,0 +1,2 @@
+CREATING MULTIPLE FOLDERS: STEP-BY-STEP EXERCISES
+In the first exercise, you’ll explore the use of constants, variables, concatenation, decision-making, and looping as you create 10 folders in the C:\mytempfolder directory. This directory was created earlier. If you do not have this folder on your machine, you can either create it manually or modify the following two exercises to use a folder that exists on your machine. In the second exercise in this section, you will modify the script to delete the 10 folders
