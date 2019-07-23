@@ -53,14 +53,75 @@ The following figure shows the results of running the script after the execution
 
 In my experience, the RemoteSigned setting is most practical. However, in a secure environment such as a production data center, I can easily see that using an AllSigned policy could make sense.
 
+## Transitioning from command line to script
+Now that you have everything set up to enable script execution, you can run your StopNotepad.ps1 script. This is shown here.
 
+> StopNotepad.ps1
 
+```powershell
+Get-Process Notepad | Stop-Process
+```
 
+If an instance of the Notepad process is running, everything is successful. 
+However, if there is no instance of Notepad running, the error shown here is generated.
 
+```powershell
+Get-Process : Cannot find a process with the name 'Notepad'. Verify the process
+ name and call the cmdlet again.
+At C:\Documents and Settings\ed\Local Settings\Temp\tmp1DB.tmp.ps1:14 char:12
++ Get-Process  <<<< Notepad | Stop-Process
+```
+![image](https://user-images.githubusercontent.com/47218880/61738335-b0199900-ad4f-11e9-83a4-71cdfaa8fb0e.png)
 
+To make the script easier to read, you break the code at the pipe character. The pipe character is not the line continuation character. The backtick(key to the left of the "1" key) character, also known as the grave accent character, is used when a line of code is too long and must be broken into two physical lines of code. The key thing to be aware of is that the two physical lines form a single logical line of code. An example of how to use line continuation is shown here.
 
+![image](https://user-images.githubusercontent.com/47218880/61738698-7a28e480-ad50-11e9-9c50-b68f84f0f90d.png)
 
+The StopNotepadSilentlyContinue.ps1 script is shown here.
 
+StopNotepadSilentlyContinue.ps1
+```powershell
+Get-Process -Name Notepad -ErrorAction SilentlyContinue |
+Stop-Process
+```
+Because you are writing a script, you can take advantage of some features of a script. One of the first things you can do is use a variable to hold the name of the process to be stopped. This has the advantage of enabling you to easily change the script to stop processes other than Notepad. All variables begin with the dollar sign. The line that holds the name of the process in a variable is shown here.
+```powershell
+$process = "notepad"
+```
+Another improvement you can add to the script is one that provides information about the process that is stopped. The Stop-Process cmdlet returns no information when it is used. However, when you use the -PassThru parameter of the Stop-Process cmdlet, the process object is passed along in the pipeline. You can use this parameter and pipeline the process object to the ForEach-Object cmdlet. You can use the $_ automatic variable to refer to the current object on the pipeline and select the name and the process ID of the process that is stopped. The concatenation operator in Windows PowerShell is the plus sign (+), and you can use it to display the values of the selected properties in addition to the strings that complete your sentence. This line of code is shown here.
+
+```powershell
+ForEach-Object { $_.name + ' with process ID: ' +  $_.ID + ' was stopped.'}
+```
+The complete StopNotepadSilentlyContinuePassThru.ps1 script is shown here.
+
+StopNotepadSilentlyContinuePassThru.ps1
+
+```powershell
+$process = "notepad"
+Get-Process -Name $Process -ErrorAction SilentlyContinue |
+Stop-Process -PassThru |
+ForEach-Object { $_.name + ' with process ID: ' +  $_.ID + ' was stopped.'}
+```
+
+When you run the script with two instances of Notepad running, output similar to the following is shown.
+
+```
+notepad with process ID: 2088 was stopped.
+notepad with process ID: 2568 was stopped.
+```
+An additional advantage of the StopNotepadSilentlyContinuePassThru.ps1 script is that you can use it to stop different processes. You can assign multiple process names (an array) to the $process variable, and when you run the script, each process will be stopped. In this example, you assign the Notepad and the Calc processes to the $process variable. This is shown here.
+
+```powershell
+$process = "notepad", "calc"
+```
+When you run the script, both processes are stopped. Output similar to the following appears.
+
+```powershell
+calc with process ID: 3428 was stopped.
+notepad with process ID: 488 was stopped.
+```
+You could continue changing your script. You could put the code in a function, write command-line help, and change the script so that it accepts command-line input or even reads a list of processes from a text file. As soon as you move from the command line to script, such options suddenly become possible.
 
 
 
