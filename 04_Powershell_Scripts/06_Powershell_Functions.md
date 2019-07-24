@@ -29,6 +29,7 @@ Yes, it works exactly as expected. You’ve created your first command.
 Okay, that was easy. Now you know how to write a simple PowerShell function. The syntax is shown in the figure below.
 
  The simplest form of a function definition in PowerShell
+ 
 ![image](https://user-images.githubusercontent.com/47218880/61804144-068ee200-adf9-11e9-88ef-ee85ec2aee24.png)
 
 A function that writes only “Hello world” isn’t too useful. Let’s see how to personalize this function by allowing an argument to be passed in.
