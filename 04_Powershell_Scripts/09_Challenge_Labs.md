@@ -74,5 +74,5 @@ Restart a computer
 Shut down a computer
 Remove a computer from a workgroup or domain
 Restore a computer’s System Restore checkpoint
-TASK 18
+### TASK 18
 What command do you think could change a registry value? Hint: it’s the same noun as the cmdlet you found for task 16.
