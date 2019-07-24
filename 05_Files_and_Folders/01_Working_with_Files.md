@@ -19,7 +19,10 @@ If you want only the beginning or the end of the file, you could use Select-Obje
 ## TIP
 > Reminder!
 ```
-Always filter the pipeline as early as possible. Although, you could achieve the same thing with Select-Object as you can with the –TotalCount and –Tail parameters, filtering at the source (Get-Content) will be faster because less objects will have to be created and passed on to the pipeline.
+Always filter the pipeline as early as possible. Although, you could achieve the same thing with
+Select-Object as you can with the –TotalCount and –Tail parameters, 
+filtering at the source (Get-Content) will be faster 
+because less objects will have to be created and passed on to the pipeline.
 ```
 ## Writing text files
 There are several ways to write to a text file. First, if you have the entire contents of the file in a variable or as the result of a pipeline, you can use the Set-Content cmdlet to write the file as a single unit. For instance, you could read a file with Get-Content, use the .Replace() method to change something, and then write the file back using Set-Content:
