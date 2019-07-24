@@ -5,9 +5,13 @@ It is most common to find a module that targets a specific system or focuses on 
 
 > A module may be binary, script, dynamic, or manifest:
 ```
-- Binary module: This is written in a language, such as C# or VB.NET, and then compiled into a library (DLL)
-- Script module: This is a collection of functions written in the PowerShell language. The commands typically reside in a script module file (PSM1)
-- Dynamic module: This does not have files associated with it. This is created using the New-Module command. The following command creates a very simple dynamic module that adds the Get-Number command:
+- Binary module: This is written in a language, such as C# or VB.NET, 
+and then compiled into a library (DLL)
+- Script module: This is a collection of functions written in the PowerShell language. 
+The commands typically reside in a script module file (PSM1)
+- Dynamic module: This does not have files associated with it. 
+This is created using the New-Module command. The following command creates a very simple dynamic module 
+that adds the Get-Number command:
 ```
 ```powershell
 New-Module -Name TestModule -ScriptBlock { 
@@ -20,8 +24,10 @@ A manifest module may also be used to build commands based on WMI classes. The c
 
 The manifest module file serves a number of purposes, as follows:
 ```
-- Describing the files that should be loaded (such as a script module file, a binary library, and a cmdlet definition XML file)
-- Listing any dependencies the module may have (such as other modules, .NET libraries, or other DLL files)
+- Describing the files that should be loaded (such as a script module file, a binary library, 
+nd a cmdlet definition XML file)
+- Listing any dependencies the module may have (such as other modules, 
+.NET libraries, or other DLL files)
 - Listing the commands that should be exported (made available to the end user)
 Recording information about the author or the project
 ```
