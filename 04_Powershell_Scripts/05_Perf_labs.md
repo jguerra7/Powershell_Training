@@ -90,8 +90,10 @@ $i++
   
 ![image](https://user-images.githubusercontent.com/47218880/61742185-2b7f4880-ad58-11e9-90e7-04db7d6bf718.png)
 
+## CHALLENGE LAB 
+Start up four instances of Windows Notepad on your system. By using only Windows PowerShell, learn everything you can about the processes. Determine whether you can kill all four processes at once.
 
-
+Similarly, figure out a way to get a list of running services on your system, sort them alphabetically by service name, and output to an HTML report. We haven’t covered all the required steps yet; I’m challenging you to use your PowerShell-fu and research skills to get the job done. I believe in you.
 
 
 
