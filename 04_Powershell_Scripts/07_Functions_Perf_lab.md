@@ -1,5 +1,5 @@
 ## Pre-lab: PowerShell Functions Labs (type and run this script)
-
+```
 # func . ps1
 # declare :
 function add ($a , $b ) {
@@ -7,7 +7,7 @@ Write-Host "$a +$b is " ($a +$b )
 }
 # use :
 add 5.12 2.56
-
+```
 # Creating a function: Step-by-step exercises
 In this exercise, you’ll explore the use of the Get-Verb cmdlet to find permissible Windows PowerShell verbs. You will also use Function keyword and create a function. After you have created the basic function, you’ll add additional functionality to the function in the next exercise.
 
