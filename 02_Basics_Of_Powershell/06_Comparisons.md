@@ -1,4 +1,4 @@
-COMPARISONS
+# COMPARISONS
 Almost all of the scripting bits we’ll introduce in this chapter rely on comparisons. That is, you give them some statement that must evaluate to either True or False, and the scripting constructs base their behavior on that result. In order to make a comparison in PowerShell, you use a comparison operator. PowerShell’s core ones are as follows:
 ```
 -eq—Equal to
