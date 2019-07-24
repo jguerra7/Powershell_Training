@@ -1,6 +1,6 @@
 ## Pre-lab: PowerShell Functions Labs (type and run this script)
 ```
-# func . ps1
+# func.ps1
 # declare :
 function add ($a , $b ) {
 Write-Host "$a +$b is " ($a +$b )
