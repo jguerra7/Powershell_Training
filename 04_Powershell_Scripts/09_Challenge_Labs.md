@@ -36,8 +36,10 @@ Note that the XML may display as a single top-level object, rather than as raw X
 Get a list of all event logs on the computer, selecting the log name, its maximum size, and overflow action, and then convert to CSV, but without writing to a log file. You may need to discover another CSV related cmdlet.
 
 ### TASK 9
-Get a list of services. Keep only the services’ names, display names, and statuses, and send that information to an HTML file with a title of “Service Report”. Have the phrase “Installed Services” displayed in the HTML file before the table of service information. If you can, display Installed Services with an <H1> html tag. Verify the file in a web browser.
-
+Get a list of services. Keep only the services’ names, display names, and statuses, and send that information to an HTML file with a title of “Service Report”. Have the phrase “Installed Services” displayed in the HTML file before the table of service information. 
+```
+If you can, display Installed Services with an <H1> html tag. Verify the file in a web browser.
+```
 ### TASK 10
 Create a new alias, named D, which runs Get-ChildItem. Export just that alias to a file. Now, close the shell and open a new console window. Import that alias into the shell. Make sure you can run D and get a directory listing.
 
