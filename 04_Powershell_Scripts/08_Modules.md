@@ -32,3 +32,39 @@ nd a cmdlet definition XML file)
 Recording information about the author or the project
 ```
 When loading a module with a manifest, PowerShell will try and load any listed dependencies. If a module fails to load because of a dependency, the commands written as part of the module will not be imported.
+
+ MODULE BASICS
+In this section, we’ll cover the basic information needed to use PowerShell modules. The first thing to know is that the module features in PowerShell are exposed through cmdlets, not language keywords. For example, you can get a list of the module commands using the Get-Command command:
+```powershell
+PS> Get-Command -Noun Module* | Format-Wide -Column 3
+
+Find-Module              Install-Module           Publish-Module
+Save-Module              Uninstall-Module         Update-Module
+Update-ModuleManifest    Export-ModuleMember      Get-Module
+Import-Module            New-Module               New-ModuleManifest
+Remove-Module            Test-ModuleManifest
+```
+
+Note that in the command name pattern, you use wildcards because there are a couple of different types of module cmdlets. These cmdlets and their descriptions are shown
+
+![image](https://user-images.githubusercontent.com/47218880/61807494-43f66e00-adff-11e9-9eba-54e22c8f39f9.png)
+
+## Finding modules on the system
+The Get-Module cmdlet is used to find modules—either the modules that are currently loaded or the modules that are available to load. The signature for this cmdlet is shown
+
+![image](https://user-images.githubusercontent.com/47218880/61807569-68eae100-adff-11e9-8e1e-274021f95e5a.png)
+
+When run with no options, Get-Module lists all the top-level modules loaded in the current session. If -All is specified, both explicitly loaded and nested modules are shown. (We’ll explain the difference between top-level and nested in a minute.) If -ListAvailable is specified, Get-Module lists all the modules available to be loaded based on the current $ENV:PSModulePath setting. If both –ListAvailable and -All are specified, the contents of the module directories are shown, including subdirectories.
+
+Let’s try this and see how it works; running Get-Module with no parameters on a new PowerShell v5 session shows three modules installed by default:
+
+```
+Microsoft.PowerShell.Management
+Microsoft.PowerShell.Utility
+PSReadline
+```
+Let’s see what’s available for loading on the system. You can use the -ListAvailable parameter on Get-Module to find the system modules that are available. (In this example, the output is filtered using the Where-Object cmdlet so you don’t pick up any non-system modules.)
+```powershell
+PS> Get-Module -ListAvailable | where { $_.path -match "System32" }
+```
+And you see 74 modules listed on a new Windows 10 machine (PowerShell v5.1)
