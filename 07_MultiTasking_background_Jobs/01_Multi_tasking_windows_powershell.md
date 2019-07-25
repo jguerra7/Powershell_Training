@@ -1,5 +1,5 @@
 ## Multitasking Windows PowerShell
-What You’ll Learn in This Hour:
+What You’ll Learn in This section :
 
 
 You may have noticed in your Windows PowerShell practice thus far that you temporarily lose control over your session when you execute one or more commands. This behavior is by design; you give the shell a set of instructions, and it goes about its business until it’s finished, after which you get your prompt back.
@@ -8,7 +8,7 @@ Wouldn’t it be nice to send commands to PowerShell to process in the backgroun
 
 Of course, you could spawn multiple Windows PowerShell sessions to do this, but as it turns out, this approach is unnecessary.
 
-Windows PowerShell includes a built-in job architecture that enables us to get PowerShell truly multitasking. By the end of this hour, you’ll understand all about how the jobs system works.
+Windows PowerShell includes a built-in job architecture that enables us to get PowerShell truly multitasking. By the end of this section, you’ll understand all about how the jobs system works.
 
 INVESTIGATING THE POWERSHELL JOB ARCHITECTURE
 The UNIX/Linux operating system family has long had the ability to send shell commands to the background for “behind the scenes” processing. Thanks to the Windows PowerShell team, we now also have this ability.
@@ -46,7 +46,7 @@ Cmdlet          Wait-Job
 By now, you should be familiar enough with the common PowerShell verbs so as to have a grasp of what you can do with these job cmdlets.
 
 Starting a Background Job
-Windows PowerShell is a bit quirky in spots, I’m sure you’d agree with me. This statement applies to how these PowerShell background jobs run under the hood. You’ll see this in Technicolor when I tell you about parent and child jobs later in this hour.
+Windows PowerShell is a bit quirky in spots, I’m sure you’d agree with me. This statement applies to how these PowerShell background jobs run under the hood. You’ll see this in Technicolor when I tell you about parent and child jobs later in this section.
 
 For now, let’s create a new job that searches our E: drive for all Adobe Acrobat PDF files:
 
