@@ -3,11 +3,17 @@
 Simple Scripting Lab to setup your powershell profile
 
 1. Open up powershell 
+  a. At the bottom of the screen, in the "Type here to search" textfield. Type in **powershell** and open up the "Windows Powershell app"
 2. Once the Powershell prompt is up type in: 
 ```powershell
 New-Item  -path $profile -type file -force
 ```
-3. Now go to the directory path of the profile location and open up the "Windows Powershell" folder 
+and press **enter**.
+3. Once that is executed, go back to the bottom of the screen and in "Type here to search" textfield. Type in **File Explorer** and open up and navigate to the file location specified in the powershell prompt after you executed the above command. The path that has the folder you are looking for is listed in the : 
+```powershell
+  Directory: your file path will be show here
+  ```
+go to the directory path of the profile location and open up the "Windows Powershell" folder 
 and open up the ".ps1" file ( It will be blank)
 4. Once the ".ps1" file is open, Type in this cmdlet script to the file and save.
 ```powershell
