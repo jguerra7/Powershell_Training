@@ -10,8 +10,6 @@ New-Item  -path $profile -type file -force
 3. Now go to the directory path of the profile location and open up the "Windows Powershell" folder 
 and open up the ".ps1" file ( It will be blank)
 4. Once the ".ps1" file is open, Type in this cmdlet script to the file and save.
-5. Now make sure powershell is closed and relaunch powershell. You should see the text you typed in the ".ps1" file from the "windows powershell" folder.
-
 ```powershell
 # Display Greeting
 
@@ -22,3 +20,6 @@ Write-Host " "
 Write-Host " "
 
 ```
+5. Now make sure powershell is closed and relaunch powershell. You should see the text you typed in the ".ps1" file from the "windows powershell" folder.
+
+
