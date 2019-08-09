@@ -3,7 +3,7 @@
 Simple Scripting Lab to setup your powershell profile
 
 1. Open up powershell 
-  a. At the bottom of the screen, in the "Type here to search" textfield. Type in **powershell** and open up the "Windows Powershell app"
+  - At the bottom of the screen, in the "Type here to search" textfield. Type in **powershell** and open up the "Windows Powershell app"
 2. Once the Powershell prompt is up type in: 
 ```powershell
 New-Item  -path $profile -type file -force
