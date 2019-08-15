@@ -489,6 +489,160 @@ The New-CimSessionOption command is not limited to protocol switching; it can af
 
 Once a session has been created, it exists in the memory until it is removed. The Get-CimSession command shows a list of connections that have been formed, and the Remove-CimSession command permanently removes connections.
 
+## Associated classes
+The Get-CimAssociatedClass command replaces the use of the ASSOCIATORS OF query type when using the CIM cmdlets.
+
+The following command gets the class instances associated with Win32_NetworkAdapterConfiguration. As the arguments for the Get-CimInstance command are long strings, splatting is used to pass the parameters into the command:
+```
+$params = @{ 
+    ClassName = 'Win32_NetworkAdapterConfiguration' 
+    Filter    = 'IPEnabled=TRUE AND DHCPEnabled=TRUE' 
+} 
+Get-CimInstance @params | Get-CimAssociatedInstance 
+```
+The following example uses Get-CimAssociatedClass to get the physical interface associated with the IP configuration:
+```
+$params = @{ 
+    ClassName = 'Win32_NetworkAdapterConfiguration' 
+    Filter    = 'IPEnabled=TRUE AND DHCPEnabled=TRUE' 
+} 
+Get-CimInstance @params | ForEach-Object { 
+    $adapter = $_ | Get-CimAssociatedInstance -ResultClassName Win32_NetworkAdapter 
+ 
+    [PSCustomObject]@{ 
+        NetConnectionID = $adapter.NetConnectionID 
+        Speed           = [Math]::Round($adapter.Speed / 1MB, 2) 
+        IPAddress       = $_.IPAddress 
+        IPSubnet        = $_.IPSubnet 
+        Index           = $_.Index 
+        Gateway         = $_.DefaultIPGateway 
+    } 
+} 
+```
+## The WMI cmdlets
+The WMI cmdlets have been superseded by the CIM cmdlets. The WMI cmdlets are not available in PowerShell Core, but the type accelerators are.
+The WMI commands are as follows:
+```
+Get-WmiObject
+Invoke-WmiMethod
+Register-WmiEvent
+Remove-WmiObject
+Set-WmiInstance
+```
+In addition to the commands, three type accelerators are available:
+```
+[Wmi]: System.Management.ManagementObject
+[WmiClass]: System.Management.ManagementClass
+[WmiSearcher]: System.Management.ManagementObjectSearcher
+```
+Each of the WMI cmdlets uses the ComputerName parameter to aim the operation at another computer. The WMI cmdlets also support a credential parameter and other authentication options affecting the authentication method.
+
+Both the Wmi and WmiClass type accelerators can be written to use a remote computer by including the computer name an example is as follows:
+```
+[Wmi]"\\RemoteComputer\root\cimv2:Win32_Process.Handle=$PID" 
+[WmiClass]"\\RemoteComputer\root\cimv2:Win32_Process" 
+```
+## Getting instances
+The Get-WmiObject command is used to execute queries for instances of WMI objects an example is as follows:
+```
+Get-WmiObject -Class Win32_ComputerSystem 
+```
+The type accelerator, WmiSearcher, may also be used to execute queries:
+```
+([WmiSearcher]"SELECT * FROM Win32_Process").Get() 
+```
+## Getting classes
+The Get-WmiObject command is used to get classes:
+```
+Get-WmiObject Win32_Process -List 
+```
+The WMI cmdlets are able to recursively list classes in namespaces. The following command lists the classes in root\cimv2 and any child namespaces:
+```
+Get-WmiObject -List -Recurse
+```
+In addition to the list parameter, the WmiClass type accelerator can be used:
+```
+[WmiClass]"Win32_Process"   
+```
+## Calling methods
+Calling a method on an existing instance of an object found using Get-WmiObject is similar to any .NET method call.
+
+The following example gets and restarts the DNS Client service. The following operation requires administrative access:
+```
+$service = Get-WmiObject Win32_Service -Filter "DisplayName='DNS Client'" 
+$service.StopService()     # Call the StopService method 
+$service.StartService()    # Call the StartService method  
+```
+The WMI class can be used to find the details of a method; for example, the Create method of Win32_Share, as follows:
+```
+PS> (Get-WmiObject Win32_Share -List).Methods['Create']
+
+Name          : Create
+InParameters  : System.Management.ManagementBaseObject
+OutParameters : System.Management.ManagementBaseObject
+Origin        : Win32_Share
+Qualifiers    : {Constructor, Implemented, MappingStrings, Static}
+```
+Where the Invoke-CimMethod command accepts a hashtable, the Invoke-WmiMethod command expects arguments to be passed as an array, in a specific order. The order can be retrieved by using the GetMethodParameters method of the WMI class:
+```
+PS> (Get-WmiObject Win32_Share -List).GetMethodParameters('Create')
 
 
+__GENUS          : 2
+__CLASS          : __PARAMETERS
+__SUPERCLASS     : 
+__DYNASTY        : __PARAMETERS
+__RELPATH        : 
+__PROPERTY_COUNT : 7
+__DERIVATION     : {}
+__SERVER         : 
+__NAMESPACE      : 
+__PATH           : 
+Access           : 
+Description      : 
+MaximumAllowed   : 
+Name             : 
+Password         : 
+Path             : 
+Type             : 
+PSComputerName   :
+```
+To create a share, the argument list must therefore contain an argument for Access, then Description, then MaximumAllowed, and so on. If the argument is optional, it can be set to null; however, PowerShell is unable to say which are mandatory, so a trip to MSDN is required: https://msdn.microsoft.com/en-us/library/aa389393(v=vs.85).aspx.
 
+Having established that Path, Name, and Type are mandatory; an array of arguments can be created in the order described by GetMethodParameters:
+```
+$argumentList = $null,            # Access 
+                $null,            # Description 
+                $null,            # MaximumAllowed 
+                'Share1',         # Name 
+                $null,            # Password 
+                'C:\Temp\Share1', # Path 
+                0                 # Type (Disk Drive) 
+Invoke-WmiMethod Win32_Share -Name Create -ArgumentList $argumentList 
+```
+The return value describes the result of the operation; a ReturnValue of 0 indicates success. As this operation requires administrator privileges (run as administrator), a return value of 2 is used to indicate that it was run without sufficient rights.
+
+If the folder used in the previous example does not exist, the ReturnValue will be set to 24.
+
+Adding the ComputerName parameter to Invoke-WmiMethod will create a share on a remote machine.
+
+Arrays of null values are messy
+
+This method of supplying arguments to execute a method is difficult to work with for all but the simplest of methods. An alternative is to use the .NET method InvokeMethod on the class object:
+```
+$class = Get-WmiObject Win32_Share -List
+$inParams = $class.GetMethodParameters('Create')
+$inParams.Name = 'Share1'
+$inParams.Path = 'C:\Temp\Share1'
+$inParams.Type = 0
+$return = $class.InvokeMethod('Create', $inParams, $null)
+```
+The last argument, set to null here, is InvokeMethodOptions, which is most often used to define a timeout for the operation. Doing so is beyond the scope of this chapter.
+
+To create a share on a remote computer, use the ComputerName parameter with Get-WmiObject.
+
+## Creating instances
+An instance of a WMI class can be created using the CreateInstance method of the class. The following example creates an instance of Win32_Trustee:
+```
+(Get-WmiObject Win32_Trustee -List).CreateInstance() 
+```
