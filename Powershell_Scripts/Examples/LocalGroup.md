@@ -23,9 +23,7 @@
 		This example shows how to list all the local groups on local computer.
 
 	.NOTES
-		Francois-Xavier Cat
-		www.lazywinadmin.com
-		@lazywinadm
+		Training
 #>
 
 	PARAM
