@@ -10,7 +10,7 @@ function Get-BatteryStatus {
     Get-BatteryStatus
 
     .NOTES
-        http://www.powershellmagazine.com/2012/10/18/pstip-get-system-power-information/
+      Training
     #>
     PARAM()
     try {
