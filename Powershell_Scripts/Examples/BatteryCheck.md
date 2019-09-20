@@ -1,3 +1,4 @@
+```powershell
 function Get-BatteryStatus {
     <#
     .SYNOPSIS
@@ -20,3 +21,4 @@ function Get-BatteryStatus {
         $PSCmdlet.ThrowTerminatingError($_)
     }
 }
+```
